@@ -1,17 +1,26 @@
 {
-  "name": "language-qc",
-  "version": "2.2.1",
+  "_id": "language-qc@2.2.2",
+  "_location": "/language-qc",
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "bugs": {
+    "url": "https://github.com/LoveRenamon/language-qc/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
   "description": "Quake C syntax highlighting support in Atom. (Source Engine)",
   "engines": {
     "atom": "*"
   },
-  "dependencies": {},
+  "homepage": "https://github.com/LoveRenamon/language-qc#readme",
+  "license": "CC",
+  "name": "language-qc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CosignCosine/language-qc.git"
+    "url": "git+https://github.com/LoveRenamon/language-qc.git"
   },
-  "bugs": {
-    "url": "https://github.com/CosignCosine/language-qc/issues"
-  },
-  "license": "CC"
+  "version": "2.2.2"
 }

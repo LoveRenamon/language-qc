@@ -1,6 +1,6 @@
 'scopeName': 'source.qc'
 'name': 'Quake C'
-'fileTypes': ['qc', 'qci']
+'fileTypes': ['qc', 'qcx', 'qci', 'vmt']
 
 'patterns': [
   {
@@ -8,39 +8,77 @@
     'name': 'constant.numeric.qc'
   },
   {
+    # $VARIABLE$
+    'match': '(\\$)(\\w*)(\\$)',
+    'captures':
+      '1':
+        'name': 'keyword.control.qc'
+      '2':
+        'name': 'variable.qc'
+      '3':
+        'name': 'keyword.control.qc'
+  },
+  {
+    # $Parameter
     'match': '(\\$)(\\w+)',
     'captures':
       '1':
         'name': 'keyword.control.qc'
       '2':
         'name': 'entity.name.function.qc'
-    'name': 'meta.function.qc'
   },
   {
-    'begin': '//|#|;',
+    # comments
+    'begin': '//',
     'end': '\\n',
     'name': 'entity.comment.qc'
   },
   {
+    # /* multiline comment */
     'begin': '/\\*',
     'end': '\\*/',
     'name': 'entity.comment.qc'
   },
+
   {
-    'begin': '\\"|\\\'',
-    'end': '\\"|\\\'',
-    'name': 'constant.string.qc'
+    # strings in "" or ''
+    'begin': '\"',
+    'end': '\"',
+    'name': 'constant.string.begin.qc'
+  },
+
+  {
+    # strings in ''
+    'begin': '\'',
+    'end': '\'',
+    'name': 'punctuation.string.begin.qc'
+  },
+
+  # $model
+  #{
+  #  'begin': '\$model\\s.+\\s.+\\s\{',
+  #  'match': '(?i:(noautodmxrules|eyeball\\s|dmxeyelid))',
+  #  'captures':
+  #    '1':
+  #      'name': 'keyword.control.qc'
+  #  'end': '^\}'
+  #},
+
+  {
+    # modifiers
+    #'begin': '\$(sequence|animation)',
+    'match': '(\\s)?(?i:((add|blend)layer|event|(match)?blend(width)?|snap|release|contact|fake(origin|rotate)|floor|height|radius|range|target|local|usesource|noa(nimation|utoik)|align(to)?|(world|local)space|(l|r)?(x|y|z)|(fixup)?loops?|spline|ik(lock|rule)|touch|activity|fade(in|out)|(weight|cmd)list|(pre)?delta|(pre)?subtract|realtime|autoplay|hidden|(num)?frames|(walk)?(frame|alignto)|fps|blank|studio|prop_data|particles|effect|\\w+_interactions))(\\s)?',
+    'captures':
+      '1':
+        'name': 'other.object.qc'
+      '2':
+        'name': 'keyword.control.qc'
+      '3':
+        'name': 'other.object.qc'
   },
   {
-    'match': '\\\\\\w|\\\\\'|\\\\\"',
-    'name': 'constant.escape.qc'
-  },
-  {
-    'match': 'fps|blank|studio|prop_data|base|dynamic_interactions|particles|effect|name|\\w+_interactions',
-    'name': 'keyword.control.qc'
-  },
-  {
+    # text
     'match': '\\b\\w+\\b',
-    'name': 'variable.other.object.qc'
+    'name': 'other.object.qc'
   }
 ]
